@@ -1,0 +1,449 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:commons="sap.suite.ui.commons" xmlns:form="sap.ui.layout.form" xmlns:table="sap.ui.table">
+	<!--<content>-->
+	<IconTabBar id="invoice_detailChange" applyContentPadding="true">
+		<items>
+			<!--Tab - Invoice Details-->
+			<IconTabFilter text="Invoice Details" icon="sap-icon://header">
+				<content>
+					<layout:Splitter orientation="Horizontal">
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="70%" resizable="true"/>
+							</layoutData>
+							<form:SimpleForm layout="ResponsiveGridLayout" columnsM="2" columnsL="2" columnsXL="2" editable="true">
+								<Label text="Purchase Order"/>
+								<Input value="{invoiceDetails>/purchaseOrder}"/>
+								<Label text="Document Date"/>
+								<Input value="{invoiceDetails>/documentDate}"/>
+								<Label text="Exchange Rate"/>
+								<Input value="{invoiceDetails>/exchangeRate}"/>
+								<Label text="Text"/>
+								<Input value="{invoiceDetails>/headerText}"/>
+								<Label text="Gross Amount"/>
+								<Input value="{invoiceDetails>/grossAmount} {invoiceDetails>/paymentCurrency}"/>
+								<Label text="Net Amount"/>
+								<Input value="{invoiceDetails>/netAmount} {invoiceDetails>/paymentCurrency}"/>
+								<Label text="Reference"/>
+								<Input value="{invoiceDetails>/invoiceID}"/>
+								<Label text="Supplier Name"/>
+								<Input value="{invoiceDetails>/supplierName}"/>
+								<Label text="Supplier Number"/>
+								<Input value="{invoiceDetails>/supplierNumber}"/>
+								<Label text="Company Code"/>
+								<Input value="{invoiceDetails>/companyCode}"/>
+							</form:SimpleForm>
+						</VBox>
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="auto"/>
+							</layoutData>
+							<ScrollContainer height='24rem' vertical='true'>
+								<Image src="{invoiceDetails>/invoiceFileName}" width="110%" height="100%" densityAware="false">
+									<detailBox>
+										<LightBox>
+											<LightBoxItem imageSrc="{invoiceDetails>/invoiceFileName}"/>
+										</LightBox>
+									</detailBox>
+								</Image>
+							</ScrollContainer>
+						</VBox>
+					</layout:Splitter>
+				</content>
+			</IconTabFilter>
+			<!--Tab - Address-->
+			<IconTabFilter text="Address" icon="sap-icon://addresses">
+				<content>
+					<layout:Splitter orientation="Horizontal">
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="70%" resizable="true"/>
+							</layoutData>
+							<form:SimpleForm layout="ResponsiveGridLayout" columnsM="2" columnsL="2" columnsXL="2">
+								<!--Ship-to Address-->
+								<core:Title text="Ship-to Address" emphasized="true"/>
+								<VBox>
+									<Input value="{invoiceDetails>/shipToAddress1}"/>
+									<Input value="{invoiceDetails>/shipToAddress2}"/>
+									<Input value="{invoiceDetails>/billToCountry}"/>
+								</VBox>
+								<!--Bill-to Address-->
+								<core:Title text="Bill-to Address" emphasized="true"/>
+								<VBox>
+									<Input value="{invoiceDetails>/billToAddress1}"/>
+									<Input value="{invoiceDetails>/billToAddress2}"/>
+									<Input value="{invoiceDetails>/billToCountry}"/>
+								</VBox>
+							</form:SimpleForm>
+						</VBox>
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="auto"/>
+							</layoutData>
+							<ScrollContainer height='24rem' vertical='true'>
+								<Image src="{invoiceDetails>/invoiceFileName}" width="110%" height="100%" densityAware="false">
+									<detailBox>
+										<LightBox>
+											<LightBoxItem imageSrc="{invoiceDetails>/invoiceFileName}"/>
+										</LightBox>
+									</detailBox>
+								</Image>
+							</ScrollContainer>
+						</VBox>
+					</layout:Splitter>
+				</content>
+			</IconTabFilter>
+			<!--Tab - Payment-->
+			<IconTabFilter text="Payment" icon="sap-icon://simple-payment">
+				<content>
+					<layout:Splitter orientation="Horizontal">
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="70%" resizable="true"/>
+							</layoutData>
+							<form:SimpleForm layout="ResponsiveGridLayout" columnsM="2" columnsL="2" columnsXL="2">
+								<Label text="Baseline Date"/>
+								<Input value="{invoiceDetails>/baselineDate}"/>
+								<Label text="Due Date"/>
+								<Input value="{invoiceDetails>/dueDate}"/>
+								<Label text="Payment Method"/>
+								<Input value="{invoiceDetails>/paymentMethod}"/>
+								<Label text="Payment Block"/>
+								<Input value="{invoiceDetails>/paymentBlock}"/>
+								<Label text="Payment Term"/>
+								<Input value="{invoiceDetails>/paymentTerms}"/>
+								<Label text="Days"/>
+								<Input value="{invoiceDetails>/day1}"/>
+								<Label text="Days"/>
+								<Input value="{invoiceDetails>/day2}"/>
+								<Label text="Days"/>
+								<Input value="{invoiceDetails>/day3}"/>
+								<Label text="Disc1"/>
+								<Input value="{invoiceDetails>/discount1}"/>
+								<Label text="Disc2"/>
+								<Input value="{invoiceDetails>/discount2}"/>
+							</form:SimpleForm>
+						</VBox>
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="auto"/>
+							</layoutData>
+							<ScrollContainer height='24rem' vertical='true'>
+								<Image src="{invoiceDetails>/invoiceFileName}" width="110%" height="100%" densityAware="false">
+									<detailBox>
+										<LightBox>
+											<LightBoxItem imageSrc="{invoiceDetails>/invoiceFileName}"/>
+										</LightBox>
+									</detailBox>
+								</Image>
+							</ScrollContainer>
+						</VBox>
+					</layout:Splitter>
+				</content>
+			</IconTabFilter>
+			<!--Tab - Bank-->
+			<IconTabFilter text="Bank" icon="sap-icon://capital-projects">
+				<content>
+					<layout:Splitter orientation="Horizontal">
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="70%" resizable="true"/>
+							</layoutData>
+							<form:SimpleForm layout="ResponsiveGridLayout" columnsM="2" columnsL="2" columnsXL="2">
+								<Label text="House Bank"/>
+								<Input value="{invoiceDetails>/houseBank}"/>
+								<Label text="Bank Key"/>
+								<Input value="{invoiceDetails>/ bankNumber}"/>
+								<Label text="Bank Name"/>
+								<Input value="{invoiceDetails>/bankName}"/>
+								<Label text="Bank Account"/>
+								<Input value="{invoiceDetails>/bankAccount}"/>
+								<Label text="House Bank A/c ID"/>
+								<Input value="{invoiceDetails>/houseBankAccountID}"/>
+								<Label text="Bank Partner Type"/>
+								<Input value="{invoiceDetails>/bankPartnerType}"/>
+							</form:SimpleForm>
+						</VBox>
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="auto"/>
+							</layoutData>
+							<ScrollContainer height='24rem' vertical='true'>
+								<Image src="{invoiceDetails>/invoiceFileName}" width="110%" height="100%" densityAware="false">
+									<detailBox>
+										<LightBox>
+											<LightBoxItem imageSrc="{invoiceDetails>/invoiceFileName}"/>
+										</LightBox>
+									</detailBox>
+								</Image>
+							</ScrollContainer>
+						</VBox>
+					</layout:Splitter>
+				</content>
+			</IconTabFilter>
+			<!--Tab - Tax-->
+			<IconTabFilter text="Tax" icon="sap-icon://commission-check">
+				<content>
+					<layout:Splitter orientation="Horizontal">
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="70%" resizable="true"/>
+							</layoutData>
+							<form:SimpleForm layout="ResponsiveGridLayout" columnsM="2" columnsL="2" columnsXL="2">
+								<Label text="Tax Code"/>
+								<Input value="{invoiceDetails>/taxCode}"/>
+								<Label text="Tax Jurisdiction"/>
+								<Input value="{invoiceDetails>/taxJurisdiction}"/>
+								<Label text="Tax Amount"/>
+								<Input value="{invoiceDetails>/totalTaxAmount}"/>
+								<Label text="Auto Calculate Tax"/>
+								<Input value="{invoiceDetails>/autoCalculateTaxIndicator}"/>
+							</form:SimpleForm>
+						</VBox>
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="auto"/>
+							</layoutData>
+							<ScrollContainer height='24rem' vertical='true'>
+								<Image src="{invoiceDetails>/invoiceFileName}" width="110%" height="100%" densityAware="false">
+									<detailBox>
+										<LightBox>
+											<LightBoxItem imageSrc="{invoiceDetails>/invoiceFileName}"/>
+										</LightBox>
+									</detailBox>
+								</Image>
+							</ScrollContainer>
+						</VBox>
+					</layout:Splitter>
+				</content>
+			</IconTabFilter>
+			<!--Tab - Items-->
+			<IconTabFilter id="poItemTabEdit" visible= "true" text="Items" icon="sap-icon://activity-items">
+				<content>
+					<layout:Splitter orientation="Horizontal">
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="70%" resizable="true"/>
+							</layoutData>
+							<table:Table rows="{ model: 'invoiceDetails', path: '/items/results'}" selectionMode="None" class="sapUiSmallMarginEnd"
+								visibleRowCountMode="Auto">
+								<table:columns>
+									<table:Column autoResizable="true" width="70px" minWidth="70px">
+										<Label text="Item Number" wrapping="true"/>
+										<table:template>
+											<Input value="{invoiceDetails>invoiceItemIndex}"/>
+										</table:template>
+									</table:Column>
+									<table:Column autoResizable="true" minWidth="70px">
+										<Label text="Item Code" wrapping="true"/>
+										<table:template>
+											<Input value="{invoiceDetails>itemCode}"/>
+										</table:template>
+									</table:Column>
+									<table:Column autoResizable="true" minWidth="300px">
+										<Label text="Description" wrapping="true"/>
+										<table:template>
+											<Input value="{invoiceDetails>itemDescription}"/>
+										</table:template>
+									</table:Column>
+									<table:Column autoResizable="true" width="100px" minWidth="70px">
+										<Label text="Quantity" wrapping="true"/>
+										<table:template>
+											<Input value="{invoiceDetails>itemQuantity}"/>
+										</table:template>
+									</table:Column>
+									<table:Column autoResizable="true" width="100px" minWidth="70px">
+										<Label text="Unit Price" wrapping="true"/>
+										<table:template>
+											<Input value="{invoiceDetails>unitPrice}"/>
+										</table:template>
+									</table:Column>
+									<table:Column autoResizable="true" width="100px" minWidth="70px">
+										<Label text="Total Amount" wrapping="true"/>
+										<table:template>
+											<Input value="{invoiceDetails>totalAmount}"/>
+										</table:template>
+									</table:Column>
+								</table:columns>
+							</table:Table>
+						</VBox>
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="auto"/>
+							</layoutData>
+							<ScrollContainer height='24rem' vertical='true'>
+								<Image src="{invoiceDetails>/invoiceFileName}" width="110%" height="100%" densityAware="false">
+									<detailBox>
+										<LightBox>
+											<LightBoxItem imageSrc="{invoiceDetails>/invoiceFileName}"/>
+										</LightBox>
+									</detailBox>
+								</Image>
+							</ScrollContainer>
+						</VBox>
+					</layout:Splitter>
+				</content>
+			</IconTabFilter>
+			<!--Tab - Non-PO Items-->
+			<IconTabFilter id="nonpoItemTabEdit" visible= "false" text="Items" icon="sap-icon://activity-items">
+				<content>
+					<layout:Splitter orientation="Horizontal">
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="70%" resizable="true"/>
+							</layoutData>
+							<table:Table id="tbInvoiceItems_nonPOC" rows="{ model: 'invoiceDetails', path: '/nonPO'}" selectionMode="None" class="sapUiSmallMarginEnd"
+								visibleRowCountMode="Auto">
+								<table:columns>
+									<table:Column autoResizable="true" minWidth="70px" width="70px">
+										<Label text="Line Item" wrapping="true"/>
+										<table:template>
+											<Input id="itemIndexDispID_nonPOC" value="{invoiceDetails>invoiceItemIndex}"/>
+										</table:template>
+									</table:Column>
+									<table:Column autoResizable="true" minWidth="70px">
+										<Label text="Company Code" wrapping="true"/>
+										<table:template>
+											<Input value="{invoiceDetails>companyCode}"/>
+										</table:template>
+									</table:Column>
+									<table:Column autoResizable="true" minWidth="300px">
+										<Label text="GL Account" wrapping="true"/>
+										<table:template>
+											<Input value="{invoiceDetails>glAccount}"/>
+										</table:template>
+									</table:Column>
+									<table:Column autoResizable="true" width="100px" minWidth="70px">
+										<Label text="GL Account Description" wrapping="true"/>
+										<table:template>
+											<Input value="{invoiceDetails>glDescription}"/>
+										</table:template>
+									</table:Column>
+									<table:Column autoResizable="true" width="70px" minWidth="70px">
+										<Label text="Cost Center" wrapping="true"/>
+										<table:template>
+											<Input value="{invoiceDetails>costCenter}"/>
+										</table:template>
+									</table:Column>
+									<table:Column autoResizable="true" width="70px" minWidth="70px">
+										<Label text="WBS" wrapping="true"/>
+										<table:template>
+											<Input value="{invoiceDetails>wbsElement}"/>
+										</table:template>
+									</table:Column>
+									<table:Column autoResizable="true" width="70px" minWidth="70px">
+										<Label text="Internal Order" wrapping="true"/>
+										<table:template>
+											<Input value="{invoiceDetails>internalOrder}"/>
+										</table:template>
+									</table:Column>
+									<table:Column autoResizable="true" width="70px" minWidth="70px">
+										<Label text="Amount" wrapping="true"/>
+										<table:template>
+											<Input value="{invoiceDetails>netAmount}"/>
+										</table:template>
+									</table:Column>
+								</table:columns>
+							</table:Table>
+						</VBox>
+						<VBox>
+							<layoutData>
+								<layout:SplitterLayoutData size="auto"/>
+							</layoutData>
+							<ScrollContainer vertical="true">
+								<Image src="{invoiceDetails>/invoiceFileName}" width="110%" height="100%" densityAware="false">
+									<detailBox>
+										<LightBox>
+											<LightBoxItem imageSrc="{invoiceDetails>/invoiceFileName}"/>
+										</LightBox>
+									</detailBox>
+								</Image>
+							</ScrollContainer>
+						</VBox>
+					</layout:Splitter>
+				</content>
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+	<!--</f:content>-->
+	<!--<VBox class="sapUiSmallMargin">-->
+	<!--	<f:SimpleForm id="SimpleFormChange480_12120"-->
+	<!--		editable="true"-->
+	<!--		layout="ResponsiveGridLayout"-->
+	<!--		title="Address"-->
+	<!--		labelSpanXL="4"-->
+	<!--		labelSpanL="4"-->
+	<!--		labelSpanM="12"-->
+	<!--		labelSpanS="12"-->
+	<!--		adjustLabelSpan="false"-->
+	<!--		emptySpanXL="0"-->
+	<!--		emptySpanL="0"-->
+	<!--		emptySpanM="0"-->
+	<!--		emptySpanS="0"-->
+	<!--		columnsXL="2"-->
+	<!--		columnsL="2"-->
+	<!--		columnsM="1"-->
+	<!--		singleContainerFullSize="false" >-->
+	<!--		<f:content>-->
+	<!--			<core:Title text="Office" />-->
+	<!--			<Label text="Name" />-->
+	<!--			<Input value="{SupplierName}" />-->
+	<!--			<Label text="Street/No." />-->
+	<!--			<Input value="{Street}">-->
+	<!--			</Input>-->
+	<!--			<Input value="{HouseNumber}">-->
+	<!--				<layoutData>-->
+	<!--					<l:GridData span="XL2 L3 M4 S4" />-->
+	<!--				</layoutData>-->
+	<!--			</Input>-->
+	<!--			<Label text="ZIP Code/City" />-->
+	<!--			<Input value="{ZIPCode}">-->
+	<!--				<layoutData>-->
+	<!--					<l:GridData span="XL2 L3 M4 S4" />-->
+	<!--				</layoutData>-->
+	<!--			</Input>-->
+	<!--			<Input value="{City}" />-->
+	<!--			<Label text="Country" />-->
+	<!--			<Select id="country" selectedKey="{Country}">-->
+	<!--				<items>-->
+	<!--					<core:Item text="England" key="England"/>-->
+	<!--					<core:Item text="Germany" key="Germany"/>-->
+	<!--					<core:Item text="USA" key="USA"/>-->
+	<!--				</items>-->
+	<!--			</Select>-->
+	<!--			<core:Title text="Online" />-->
+	<!--			<Label text="Web" />-->
+	<!--			<Input value="{Url}" type="Url" />-->
+	<!--			<Label text="Twitter" />-->
+	<!--			<Input value="{Twitter}" />-->
+	<!--		</f:content>-->
+	<!--	</f:SimpleForm>-->
+	<!--	<f:SimpleForm id="SimpleFormChange480_12120-2"-->
+	<!--		editable="true"-->
+	<!--		layout="ResponsiveGridLayout"-->
+	<!--		title="More"-->
+	<!--		labelSpanXL="4"-->
+	<!--		labelSpanL="4"-->
+	<!--		labelSpanM="12"-->
+	<!--		labelSpanS="12"-->
+	<!--		adjustLabelSpan="false"-->
+	<!--		emptySpanXL="0"-->
+	<!--		emptySpanL="0"-->
+	<!--		emptySpanM="0"-->
+	<!--		emptySpanS="0"-->
+	<!--		columnsXL="2"-->
+	<!--		columnsL="2"-->
+	<!--		columnsM="1"-->
+	<!--		singleContainerFullSize="false">-->
+	<!--		<f:content>-->
+	<!--			<core:Title text="Contact data" />-->
+	<!--			<Label text="Email" />-->
+	<!--			<Input value="{EMail}" type="Email" />-->
+	<!--			<Label text="Tel." />-->
+	<!--			<Input value="{Tel}" type="Tel" />-->
+	<!--			<Label text="SMS" />-->
+	<!--			<Input value="{Sms}" type="Tel" />-->
+	<!--		</f:content>-->
+	<!--	</f:SimpleForm>-->
+	<!--</VBox>-->
+</core:FragmentDefinition>

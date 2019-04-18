@@ -1,0 +1,17 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			Namespace="com.deloitte.apps.invoiceprocessor.InvoiceServices">
+			<EntityType Name="InvoiceType">
+				<Key><PropertyRef Name="imageGUID"/><PropertyRef Name="invoiceID"/></Key><Property Name="imageGUID" Type="Edm.String" Nullable="false" MaxLength="36"/><Property Name="invoiceID" Type="Edm.String" Nullable="false" MaxLength="10"/><Property Name="invoiceStatus" Type="Edm.String" MaxLength="20"/><Property Name="documentType" Type="Edm.String" MaxLength="10"/><Property Name="documentDate" Type="Edm.DateTime"/><Property Name="invoiceDate" Type="Edm.DateTime"/><Property Name="postingDate" Type="Edm.DateTime"/><Property Name="invoicingParty" Type="Edm.String" MaxLength="20"/><Property Name="companyCode" Type="Edm.String" MaxLength="20"/><NavigationProperty Name="Items" Relationship="com.deloitte.apps.invoiceprocessor.InvoiceServices.Invoice_ItemsType"
+					FromRole="InvoicePrincipal" ToRole="InvoiceItemDependent"/></EntityType>
+			<EntityType Name="InvoiceItemType">
+				<Key><PropertyRef Name="imageGUID"/><PropertyRef Name="invoiceID"/><PropertyRef Name="invoiceItemIndex"/></Key><Property Name="imageGUID" Type="Edm.String" Nullable="false" MaxLength="36"/><Property Name="invoiceID" Type="Edm.String" Nullable="false" MaxLength="10"/><Property Name="invoiceItemIndex" Type="Edm.String" Nullable="false" MaxLength="5"/><Property Name="itemNumber" Type="Edm.String" MaxLength="20"/><Property Name="itemDescription" Type="Edm.String" MaxLength="40"/><Property Name="unitPrice" Type="Edm.Decimal" Precision="34"/><Property Name="itemPrice" Type="Edm.Decimal" Precision="34"/><Property Name="itemQuantity" Type="Edm.Int32"/><Property Name="itemQuantityShipped" Type="Edm.Int32"/><Property Name="itemTax" Type="Edm.Decimal" Precision="34"/><Property Name="itemTaxRate" Type="Edm.Decimal" Precision="34"/><Property Name="itemUnit" Type="Edm.Int32"/></EntityType>
+			<Association Name="Invoice_ItemsType"><End Type="com.deloitte.apps.invoiceprocessor.InvoiceServices.InvoiceType" Role="InvoicePrincipal" Multiplicity="1"/><End Type="com.deloitte.apps.invoiceprocessor.InvoiceServices.InvoiceItemType" Role="InvoiceItemDependent" Multiplicity="*"/></Association>
+			<EntityContainer Name="InvoiceServices" m:IsDefaultEntityContainer="true"><EntitySet Name="Invoice" EntityType="com.deloitte.apps.invoiceprocessor.InvoiceServices.InvoiceType"/><EntitySet Name="InvoiceItem" EntityType="com.deloitte.apps.invoiceprocessor.InvoiceServices.InvoiceItemType"/>
+				<AssociationSet Name="Invoice_Items" Association="com.deloitte.apps.invoiceprocessor.InvoiceServices.Invoice_ItemsType"><End Role="InvoicePrincipal" EntitySet="Invoice"/><End Role="InvoiceItemDependent" EntitySet="InvoiceItem"/></AssociationSet>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

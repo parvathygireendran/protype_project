@@ -1,0 +1,182 @@
+{
+    "resources": [
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "controller/InvoiceDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/InvoiceDetail.controller.js"
+        },
+        {
+            "name": "controller/InvoiceList-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/InvoiceList.controller.js"
+        },
+        {
+            "name": "css/style-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "extended_runnable_file.html"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "localService/InvoiceServices.xsodata/metadata.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "resources/Invoice_1.jpg"
+        },
+        {
+            "name": "resources/Invoice_1.png"
+        },
+        {
+            "name": "resources/Invoice_2.jpg"
+        },
+        {
+            "name": "serviceBinding-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "serviceBinding.js"
+        },
+        {
+            "name": "tmp/Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "tmp/Component.js"
+        },
+        {
+            "name": "tmp/controller/InvoiceDetail.controller.js"
+        },
+        {
+            "name": "tmp/controller/InvoiceList.controller.js"
+        },
+        {
+            "name": "tmp/css/style.css"
+        },
+        {
+            "name": "tmp/extended_runnable_file.html"
+        },
+        {
+            "name": "tmp/i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "tmp/index.html"
+        },
+        {
+            "name": "tmp/localService/InvoiceServices.xsodata/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/metadata.xml"
+        },
+        {
+            "name": "tmp/manifest.json"
+        },
+        {
+            "name": "tmp/model/models.js"
+        },
+        {
+            "name": "tmp/resources/Invoice_1.jpg"
+        },
+        {
+            "name": "tmp/resources/Invoice_1.png"
+        },
+        {
+            "name": "tmp/resources/Invoice_2.jpg"
+        },
+        {
+            "name": "tmp/serviceBinding.js"
+        },
+        {
+            "name": "tmp/view/InvoiceDetail.view.xml"
+        },
+        {
+            "name": "tmp/view/InvoiceDetailChange.fragment.xml"
+        },
+        {
+            "name": "tmp/view/InvoiceDetailDisplay.fragment.xml"
+        },
+        {
+            "name": "tmp/view/InvoiceList.view.xml"
+        },
+        {
+            "name": "tmp/view/InvoiceUploadDialog.fragment.xml"
+        },
+        {
+            "name": "tmp-dbg/Component.js"
+        },
+        {
+            "name": "tmp-dbg/controller/InvoiceDetail.controller.js"
+        },
+        {
+            "name": "tmp-dbg/controller/InvoiceList.controller.js"
+        },
+        {
+            "name": "tmp-dbg/css/style.css"
+        },
+        {
+            "name": "tmp-dbg/model/models.js"
+        },
+        {
+            "name": "tmp-dbg/serviceBinding.js"
+        },
+        {
+            "name": "view/InvoiceDetail.view.xml"
+        },
+        {
+            "name": "view/InvoiceDetailChange.fragment.xml"
+        },
+        {
+            "name": "view/InvoiceDetailDisplay.fragment.xml"
+        },
+        {
+            "name": "view/InvoiceList.view.xml"
+        },
+        {
+            "name": "view/InvoiceUploadDialog.fragment.xml"
+        }
+    ]
+}

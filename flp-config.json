@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "com.deloitte.scp.app.InvoiceProcessornew.invoiceprocessornew",
+        "description": "test98",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#invoiceprocessornew-Display",
+        "navigationComponentName": "com.deloitte.scp.app.InvoiceProcessornew",
+        "intentSemanticObject": "invoiceprocessornew",
+        "intentAction": "Display",
+        "html5ApplicationName": "invoiceprocessornew",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "ea67292e-e073-460b-aedf-0ca3c9056982-1551195680013"
+        ],
+        "contentPackages": [
+            "7c550a29-e50e-44b5-9494-1948ffec5e4c-1551195335941"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "invoiceprocessortest",
+        "subtitle": "test",
+        "searchKeywords": "invoiceprocessortest,test",
+        "displayIconUrl": "sap-icon://approvals",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

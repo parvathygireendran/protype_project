@@ -1,0 +1,185 @@
+<mvc:View controllerName="com.deloitte.scp.app.InvoiceProcessornew.controller.InvoiceList" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:smartVariants="sap.ui.comp.smartvariants" xmlns:f="sap.f" xmlns:commons="sap.suite.ui.commons">
+	<App id="idAppControl">
+		<pages>
+			<f:DynamicPage id="dpInvoiceList" fitContent="true" headerExpanded="true" toggleHeaderOnTitleClick="true">
+				<f:title>
+					<f:DynamicPageTitle>
+						<f:heading>
+							<smartVariants:SmartVariantManagement id="svmInvoicesList" showShare="true" showExecuteOnSelection="true" showSetAsDefault="true"
+								persistencyKey="com.deloitte.scp.app.InvoiceProcessor.InvoicesList.sv"/>
+						</f:heading>
+					</f:DynamicPageTitle>
+				</f:title>
+				<f:header>
+					<f:DynamicPageHeader pinnable="true">
+						<f:content>
+							<FlexBox>
+								<items>
+									<smartFilterBar:SmartFilterBar id="smtFltrInvoicesList" entitySet="Invoice" liveMode="false" showMessages="true"
+										smartVariant="svmInvoicesList" persistencyKey="com.deloitte.scp.app.InvoiceProcessor.InvoicesList.sfb" enableBasicSearch="true"
+										basicSearchFieldName="invoiceID">
+										<smartFilterBar:controlConfiguration>
+											<smartFilterBar:ControlConfiguration key="supplierNumber" label="Supplier" visibleInAdvancedArea="true"/>
+											<smartFilterBar:ControlConfiguration key="invoiceID" label="Invoice No." visibleInAdvancedArea="true"/>
+											<smartFilterBar:ControlConfiguration key="purchaseOrder" label="Purchase Order" visibleInAdvancedArea="true"/>
+											<smartFilterBar:ControlConfiguration key="companyCode" label="Company Code" visibleInAdvancedArea="true"/>
+											<smartFilterBar:ControlConfiguration key="invoiceStatus" label="Status" visibleInAdvancedArea="true"/>
+											<!--<smartFilterBar:ControlConfiguration key="invoiceStatus" label="Status" visibleInAdvancedArea="true" controlType="dropDownList">-->
+											<!--	<smartFilterBar:customControl>-->
+											<!--		<MultiComboBox>-->
+											<!--			<core:ListItem key="Scanned_Errors" text="Scanned with Errors"/>-->
+											<!--			<core:Item key="Scanned" text="Scanned"/>-->
+											<!--			<core:Item key="In_Process" text="In Process"/>-->
+											<!--			<core:Item key="Posted" text="Posted"/>-->
+											<!--		</MultiComboBox>-->
+											<!--	</smartFilterBar:customControl>-->
+											<!--</smartFilterBar:ControlConfiguration>-->
+										</smartFilterBar:controlConfiguration>
+									</smartFilterBar:SmartFilterBar>
+								</items>
+							</FlexBox>
+						</f:content>
+					</f:DynamicPageHeader>
+				</f:header>
+				<f:content>
+					<smartTable:SmartTable id="smtTblInvoicesList" entitySet="Invoice" smartFilterId="smtFltrInvoicesList" header="Invoices" showRowCount="true"
+						tableType="ResponsiveTable"
+						requestAtLeastFields="invoiceGUID,invoiceID,supplierNumber,purchaseOrder,companyCode,grossAmount,paymentCurrency,invoiceStatus,invoiceUploadTS"
+						useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false"
+						useTablePersonalisation="true" showTablePersonalisation="false" enableAutoBinding="true"
+						demandPopin="true" class="sapUiResponsiveContentPadding" showFullScreenButton="true">
+						<smartTable:layoutData>
+							<FlexItemData growFactor="1"/>
+						</smartTable:layoutData>
+						<smartTable:customToolbar>
+							<OverflowToolbar design="Transparent">
+								<ToolbarSpacer/>
+								<OverflowToolbarButton icon="sap-icon://add-document" text="Add Invoice(s)" press="onAddInvoicesPress"/>
+								<OverflowToolbarButton icon="sap-icon://sort" text="Sort" press="onSortPress"/>
+								<OverflowToolbarButton icon="sap-icon://filter" text="Filter" press="onFilterPress"/>
+							</OverflowToolbar>
+						</smartTable:customToolbar>
+						<Table id="tblInvoiceList" sticky="ColumnHeaders" growing="true" growingThreshold="50" updateFinished="onUpdateFinished">
+							<columns>
+								<Column hAlign="Center" visible="false">
+									<header><Text text=""/></header>
+								</Column>
+								
+								<Column hAlign="Center">
+									<header><Text text="{i18n>stInvLstInvoiceNumber}"/></header>
+								</Column>
+								
+								<Column hAlign="Center">
+									<header><Text text="{i18n>stInvLstSupplier}"/></header>
+								</Column>
+								<Column hAlign="Center">
+									<header><Text text="{i18n>stInvLstStatus}"/></header>
+								</Column>
+								<Column hAlign="Center">
+									<header><Text text="{i18n>stInvLstUploadTS}"/></header>
+								</Column>
+
+								<Column hAlign="Center">
+									<header><Text text="{i18n>stInvLstPurchaseOrder}"/></header>
+								</Column>
+								<Column hAlign="Center">
+									<header><Text text="{i18n>stInvLstCompanyCode}"/></header>
+								</Column>
+								<Column hAlign="Left">
+									<header><Text text="{i18n>stInvLstGrossAmount}"/></header>
+								</Column>
+							</columns>
+							
+						<!--	<columns>
+								
+								<Column hAlign="Center" visible="false">
+								<customData >
+								<core:CustomData key="p13nData" value='\{"sortProperty": "invoiceGUID", "filterProperty": "invoiceGUID", "columnKey": "invoiceGUID", "leadingProperty": "invoiceGUID", "columnIndex":""}'/>
+								</customData>
+								<header><Text text="{i18n>stInvLstInvoiceNumber}"/></header>
+								</Column>
+							
+								<Column hAlign="Center">
+								<customData >
+								<core:CustomData key="p13nData" value='\{"sortProperty": "invoiceID", "filterProperty": "invoiceID", "columnKey": "invoiceID", "leadingProperty": "invoiceID", "columnIndex":"0"}'/>
+								</customData>
+								<header><Text text="{i18n>stInvLstInvoiceNumber}"/></header>
+								</Column>
+								
+								<Column hAlign="Center">
+								<customData >
+								<core:CustomData key="p13nData" value='\{"sortProperty": "supplierNumber", "filterProperty": "supplierNumber", "columnKey": "supplierNumber", "leadingProperty": "supplierNumber", "columnIndex":"1"}'/>
+								</customData>
+								<header><Text text="{i18n>stInvLstSupplier}"/></header>
+								</Column>
+								
+								<Column hAlign="Center">
+								<customData >
+								<core:CustomData key="p13nData" value='\{"sortProperty": "invoiceStatus", "filterProperty": "invoiceStatus", "columnKey": "invoiceStatus", "leadingProperty": "invoiceStatus", "columnIndex":"2"}'/>
+								</customData>
+								<header><Text text="{i18n>stInvLstStatus}"/></header>
+								</Column>
+								
+								<Column hAlign="Center">
+								<customData >
+								<core:CustomData key="p13nData" value='\{"sortProperty": "invoiceUploadTS", "filterProperty": "invoiceUploadTS", "columnKey": "invoiceUploadTS", "leadingProperty": "invoiceUploadTS", "columnIndex":"3"}'/>
+								</customData>
+								<header><Text text="{i18n>stInvLstUploadTS}"/></header>
+								</Column>
+								
+								<Column hAlign="Center">
+								<customData >
+								<core:CustomData key="p13nData" value='\{"sortProperty": "purchaseOrder", "filterProperty": "purchaseOrder", "columnKey": "purchaseOrder", "leadingProperty": "purchaseOrder", "columnIndex":"4"}'/>
+								</customData>
+								<header><Text text="{i18n>stInvLstPurchaseOrder}"/></header>
+								</Column>
+
+								<Column hAlign="Center">
+								<customData >
+								<core:CustomData key="p13nData" value='\{"sortProperty": "companyCode", "filterProperty": "companyCode", "columnKey": "companyCode", "leadingProperty": "companyCode", "columnIndex":"5"}'/>
+								</customData>
+								<header><Text text="{i18n>stInvLstCompanyCode}"/></header>
+								</Column>
+								
+								<Column hAlign="Center">
+								<customData >
+								<core:CustomData key="p13nData" value='\{"sortProperty": "grossAmount", "filterProperty": "grossAmount", "columnKey": "grossAmount", "leadingProperty": "grossAmount", "columnIndex":"6"}'/>
+								</customData>
+								<header><Text text="{i18n>stInvLstGrossAmount}"/></header>
+								</Column>
+								
+							
+							</columns>-->
+							
+							<items>
+								<ColumnListItem type="Navigation" press="onInvoiceSelected">
+									<cells><Text text="{invoiceGUID}"/></cells>
+									<cells><Text text="{invoiceID}"/></cells>
+									<cells><Text text="{supplierNumber}"/></cells>
+									<cells>
+										<VBox alignItems="Start">
+											<ObjectStatus text="" active="true" icon="sap-icon://document-text" state="None" textDirection="LTR"/>
+											<commons:MicroProcessFlow ariaLabel="{invoiceStatus}">
+												<commons:content>
+												<commons:MicroProcessFlowItem state="None" icon="sap-icon://document-text"/>
+												<commons:MicroProcessFlowItem state="None" icon="sap-icon://process"/>
+												<commons:MicroProcessFlowItem state="None" icon="sap-icon://accounting-document-verification"/>
+												</commons:content>
+											</commons:MicroProcessFlow>
+										</VBox>
+									</cells>
+									<cells><Text text="{invoiceUploadTS}"/></cells>
+									<cells><Text text="{purchaseOrder}"/></cells>
+									<cells><Text text="{companyCode}"/></cells>
+									<cells><Text text="{paymentCurrency} {grossAmount}"/></cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</smartTable:SmartTable>
+				</f:content>
+			</f:DynamicPage>
+		</pages>
+	</App>
+</mvc:View>

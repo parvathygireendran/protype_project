@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:f="sap.f">
+	<Dialog stretch="true" id="uploadDialog">
+		<Toolbar>
+			<ToolbarSpacer/>
+			<Button text="Close" type="Emphasized" width="80px" press="onDialogPress"></Button>
+			<!--<Button icon="sap-icon://action" />-->
+		</Toolbar>
+		<UploadCollection id="ucInvoices" multiple="true" uploadEnabled="true"
+			uploadUrl="https://invoiceprocessorapi.snetacloud.com" beforeUploadStarts="onBeforeUploadStarts"
+			instantUpload="true" uploadComplete="onUploadComplete" items="{ path: '/items', templateShareable: false }">
+			<headerParameters>
+				<UploadCollectionParameter/>
+			</headerParameters>
+			<items>
+				<UploadCollectionItem documentId="{documentId}" fileName="{fileName}" mimeType="{mimeType}" url="{url}" visibleDelete="false"
+					visibleEdit="false"
+						statuses="Uploaded Successfully">
+											<statuses>
+							<ObjectStatus title="Status"
+								text="Uploaded Successfully"
+								state="Success" />
+						</statuses>
+				</UploadCollectionItem>
+			</items>
+		</UploadCollection>
+	</Dialog>
+</core:FragmentDefinition>
